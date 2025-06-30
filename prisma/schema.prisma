@@ -15,10 +15,9 @@ datasource db {
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
-  email         String    @unique
-  name          String?
-  posts         Post[]
+  id            String    @id
+  name          String
+  email         String
   emailVerified Boolean
   image         String?
   createdAt     DateTime
@@ -26,6 +25,7 @@ model User {
   sessions      Session[]
   accounts      Account[]
 
+  @@unique([email])
   @@map("user")
 }
 
